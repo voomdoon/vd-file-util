@@ -3,6 +3,7 @@ package de.voomdoon.util.file;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.File;
+import java.io.IOException;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -32,12 +33,27 @@ class FileTreeFormatterTest extends TestBase {
 	 * @since 0.1.0
 	 */
 	@Test
-	void test_directoryEmpty(@TempInputDirectory File directory) {
+	void test_rootEmpty(@TempInputDirectory File directory) {
 		logTestStart();
 
 		String actual = format(directory);
 
 		assertThat(actual).contains(directory.getName());
+	}
+
+	/**
+	 * @throws IOException
+	 * @since 0.1.0
+	 */
+	@Test
+	void test_rootWithFile(@TempInputDirectory File directory) throws IOException {
+		logTestStart();
+
+		new File(directory + "/test.txt").createNewFile();
+
+		String actual = format(directory);
+
+		assertThat(actual).isEqualTo(directory.getName() + "\n" + "└── test.txt");
 	}
 
 	/**

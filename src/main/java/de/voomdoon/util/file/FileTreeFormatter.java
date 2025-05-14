@@ -62,6 +62,10 @@ public class FileTreeFormatter {
 	 * @since 0.1.0
 	 */
 	private void appendFilesOfDirectory(StringBuilder sb, File directory, int level) {
+		if (!directory.isDirectory()) {
+			return;
+		}
+
 		File[] files = directory.listFiles();
 		Arrays.sort(files);
 
