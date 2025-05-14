@@ -12,4 +12,30 @@
 	<groupId>de.voomdoon.util</groupId>
 	<artifactId>vd-file-util</artifactId>
 	<version>0.1.0-SNAPSHOT</version>
+	
+		<properties>
+		<junit-jupiter.version>5.12.2</junit-jupiter.version>
+	</properties>
+
+	<dependencies>
+		<!-- + + + + + + + + + + test dependencies + + + + + + + + + + -->
+		<!-- + + + + + internal voomdoon test dependencies + + + + + -->
+		<dependency>
+			<groupId>de.voomdoon.testing</groupId>
+			<artifactId>vd-test-util</artifactId>
+			<version>0.2.0-SNAPSHOT</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- - - - - - internal voomdoon test dependencies - - - - - -->
+
+		<!-- + + + + + external test dependencies + + + + + -->
+		<dependency>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-core</artifactId>
+			<version>3.27.3</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- - - - - - external test dependencies - - - - - -->
+		<!-- - - - - - - - - - - test dependencies - - - - - - - - - - -->
+	</dependencies>
 </project>
