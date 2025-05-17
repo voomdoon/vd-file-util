@@ -1,6 +1,7 @@
 package de.voomdoon.util.file;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assumptions.assumeThat;
 
 import java.io.File;
 import java.io.IOException;
@@ -33,6 +34,19 @@ class FileTreeFormatterTest extends TestBase {
 	 * @since 0.1.0
 	 */
 	@Test
+	void test_rootDirectoryContainsSlashAtTheEnd(@TempInputDirectory File directory) {
+		logTestStart();
+
+		String actual = format(directory);
+
+		assumeThat(actual).contains(directory.getName());
+		assertThat(actual).contains(directory.getName() + "/");
+	}
+
+	/**
+	 * @since 0.1.0
+	 */
+	@Test
 	void test_rootEmpty(@TempInputDirectory File directory) {
 		logTestStart();
 
@@ -53,7 +67,8 @@ class FileTreeFormatterTest extends TestBase {
 
 		String actual = format(directory);
 
-		assertThat(actual).isEqualTo(directory.getName() + "\n" + "└── test.txt");
+		assertThat(actual).isEqualTo(directory.getName() + "/" //
+				+ "\n└── test.txt");
 	}
 
 	/**
@@ -67,7 +82,8 @@ class FileTreeFormatterTest extends TestBase {
 
 		String actual = format(directory);
 
-		assertThat(actual).isEqualTo(directory.getName() + "\n" + "└── test-sub-dir");
+		assertThat(actual).isEqualTo(directory.getName() + "/"//
+				+ "\n└── test-sub-dir/");
 	}
 
 	/**
@@ -82,9 +98,9 @@ class FileTreeFormatterTest extends TestBase {
 
 		String actual = format(directory);
 
-		assertThat(actual).isEqualTo(directory.getName() //
-				+ "\n├── test-sub-dir1" //
-				+ "\n└── test-sub-dir2");
+		assertThat(actual).isEqualTo(directory.getName() + "/"//
+				+ "\n├── test-sub-dir1/" //
+				+ "\n└── test-sub-dir2/");
 	}
 
 	/**
@@ -99,9 +115,9 @@ class FileTreeFormatterTest extends TestBase {
 
 		String actual = format(directory);
 
-		assertThat(actual).isEqualTo(directory.getName() //
-				+ "\n├── test-sub-dir1" //
-				+ "\n└── test-sub-dir2");
+		assertThat(actual).isEqualTo(directory.getName() + "/" //
+				+ "\n├── test-sub-dir1/" //
+				+ "\n└── test-sub-dir2/");
 	}
 
 	/**
@@ -115,9 +131,9 @@ class FileTreeFormatterTest extends TestBase {
 
 		String actual = format(directory);
 
-		assertThat(actual).isEqualTo(directory.getName() //
-				+ "\n└── test-sub-dir1" //
-				+ "\n    └── test-sub-dir2");
+		assertThat(actual).isEqualTo(directory.getName() + "/" //
+				+ "\n└── test-sub-dir1/" //
+				+ "\n    └── test-sub-dir2/");
 	}
 
 	/**

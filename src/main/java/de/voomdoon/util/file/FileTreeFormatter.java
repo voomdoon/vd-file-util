@@ -23,7 +23,7 @@ public class FileTreeFormatter {
 	public String format(File directory) {
 		StringBuilder sb = new StringBuilder();
 
-		appendDirectory(sb, directory, 0, Optional.empty());
+		appendFileOrDirectory(sb, directory, 0, Optional.empty());
 
 		return sb.toString();
 	}
@@ -32,12 +32,12 @@ public class FileTreeFormatter {
 	 * DOCME add JavaDoc for method append
 	 * 
 	 * @param sb
-	 * @param directory
+	 * @param fileOrDirectory
 	 * @param level
 	 * @param last
 	 * @since 0.1.0
 	 */
-	private void appendDirectory(StringBuilder sb, File directory, int level, Optional<Boolean> last) {
+	private void appendFileOrDirectory(StringBuilder sb, File fileOrDirectory, int level, Optional<Boolean> last) {
 		if (level > 0 && last.isPresent()) {
 			sb.append("\n");
 			sb.append(" ".repeat((level - 1) * 4));
@@ -49,8 +49,13 @@ public class FileTreeFormatter {
 			}
 		}
 
-		sb.append(directory.getName());
-		appendFilesOfDirectory(sb, directory, level);
+		sb.append(fileOrDirectory.getName());
+
+		if (fileOrDirectory.isDirectory()) {
+			sb.append("/");
+		}
+
+		appendFilesOfDirectory(sb, fileOrDirectory, level);
 	}
 
 	/**
@@ -72,7 +77,7 @@ public class FileTreeFormatter {
 		for (int i = 0; i < files.length; i++) {
 			File file = files[i];
 			boolean last = (i == files.length - 1);
-			appendDirectory(sb, file, level + 1, Optional.of(last));
+			appendFileOrDirectory(sb, file, level + 1, Optional.of(last));
 		}
 	}
 }
