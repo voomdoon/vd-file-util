@@ -38,7 +38,7 @@ public class FileTreeFormatter {
 	 * @since 0.1.0
 	 */
 	private void appendFileOrDirectory(StringBuilder sb, File fileOrDirectory, int level, Optional<Boolean> last) {
-		if (level > 0 && last.isPresent()) {
+		if (level > 0 && last.isPresent()) {// TESTME
 			sb.append("\n");
 			sb.append(" ".repeat((level - 1) * 4));
 
@@ -72,7 +72,7 @@ public class FileTreeFormatter {
 		}
 
 		File[] files = directory.listFiles();
-		Arrays.sort(files);
+		Arrays.sort(files);// TESTME
 
 		for (int i = 0; i < files.length; i++) {
 			File file = files[i];
