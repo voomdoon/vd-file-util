@@ -5,8 +5,19 @@ import java.util.Arrays;
 import java.util.Optional;
 
 /**
- * DOCME add JavaDoc for
+ * Utility for generating a textual tree representation of a directory structure. Uses Unicode box-drawing characters to
+ * visually indicate the hierarchy.
  *
+ * <p>
+ * Example output:
+ * 
+ * <pre>
+ * project/
+ * ├── src/
+ * │   └── Main.java
+ * └── README.md
+ * </pre>
+ * 
  * @author André Schulz
  *
  * @since 0.1.0
@@ -14,10 +25,11 @@ import java.util.Optional;
 public class FileTreeFormatter {
 
 	/**
-	 * DOCME add JavaDoc for method format
+	 * Generates a tree-like string representation of the given directory or file.
 	 * 
 	 * @param directory
-	 * @return
+	 *            the root file or directory to format
+	 * @return formatted tree {@link String}
 	 * @since 0.1.0
 	 */
 	public String format(File directory) {
@@ -29,12 +41,14 @@ public class FileTreeFormatter {
 	}
 
 	/**
-	 * DOCME add JavaDoc for method append
-	 * 
 	 * @param sb
+	 *            {@link StringBuilder}
 	 * @param fileOrDirectory
+	 *            {@link File}
 	 * @param level
+	 *            the current nesting level (starting at 0)
 	 * @param last
+	 *            whether this entry is the last child at its level
 	 * @since 0.1.0
 	 */
 	private void appendFileOrDirectory(StringBuilder sb, File fileOrDirectory, int level, Optional<Boolean> last) {
@@ -59,11 +73,12 @@ public class FileTreeFormatter {
 	}
 
 	/**
-	 * DOCME add JavaDoc for method appendFilesOfDirectory
-	 * 
 	 * @param sb
+	 *            {@link StringBuilder}
 	 * @param directory
+	 *            directory as {@link File}
 	 * @param level
+	 *            the current nesting level (starting at 0)
 	 * @since 0.1.0
 	 */
 	private void appendFilesOfDirectory(StringBuilder sb, File directory, int level) {

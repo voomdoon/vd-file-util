@@ -1,7 +1,6 @@
 package de.voomdoon.util.file;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assumptions.assumeThat;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,7 +14,7 @@ import de.voomdoon.testing.file.WithTempInputDirectories;
 import de.voomdoon.testing.tests.TestBase;
 
 /**
- * DOCME add JavaDoc for
+ * Tests for {@link FileTreeFormatter}.
  *
  * @author André Schulz
  *
@@ -34,13 +33,12 @@ class FileTreeFormatterTest extends TestBase {
 	 * @since 0.1.0
 	 */
 	@Test
-	void test_rootDirectoryContainsSlashAtTheEnd(@TempInputDirectory File directory) {
+	void test_rootDirectory(@TempInputDirectory File directory) {
 		logTestStart();
 
 		String actual = format(directory);
 
-		assumeThat(actual).contains(directory.getName());
-		assertThat(actual).contains(directory.getName() + "/");
+		assertThat(actual).isEqualTo(directory.getName() + "/");
 	}
 
 	/**
