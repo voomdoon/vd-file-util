@@ -32,6 +32,12 @@
 			<version>0.1.0</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>de.voomdoon.testing</groupId>
+			<artifactId>vd-logging-test-util</artifactId>
+			<version>0.2.0-SNAPSHOT</version>
+			<scope>test</scope>
+		</dependency>
 		<!-- - - - - - internal voomdoon test dependencies - - - - - -->
 
 		<!-- + + + + + external test dependencies + + + + + -->
@@ -39,6 +45,12 @@
 			<groupId>org.assertj</groupId>
 			<artifactId>assertj-core</artifactId>
 			<version>3.27.3</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>5.21.0</version>
 			<scope>test</scope>
 		</dependency>
 		<!-- - - - - - external test dependencies - - - - - -->
