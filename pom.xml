@@ -15,6 +15,7 @@
 	
 	<properties>
 		<junit-jupiter.version>5.12.2</junit-jupiter.version>
+		<mockito.agent.argLine>-javaagent:${org.mockito:mockito-core:jar}</mockito.agent.argLine>
 	</properties>
 
 	<dependencies>
